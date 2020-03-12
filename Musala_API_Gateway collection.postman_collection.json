@@ -1,0 +1,513 @@
+{
+	"info": {
+		"_postman_id": "d88cea4a-1e27-406f-ae01-5a49e776d33a",
+		"name": "Musala-API-Gateway collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gateway POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e519e6e-6bf1-4fce-a1ac-d1a19e7dc429",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    pm.environment.set(\"gatewayId\", data.id);",
+							"    console.log(\"Gateway created successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"gateway 85\",\n\t\"address\": \"10.0.0.8\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/gateway",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gateway"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway GET All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0f455e9-438d-48e0-be38-c92eb024d6ae",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"   console.log(\" Get all gateway successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"otrolender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/gateway",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"gateway"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Get by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0feb669b-1b86-4875-9aa3-285c031ae6f9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    pm.environment.set(\"gatewayId\", data.id);",
+							"    console.log(\"Get gateway successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/gateway/{{gatewayId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gateway",
+						"{{gatewayId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "878d1ae2-4ebc-42b4-a1d0-e8db6e0aba40",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    pm.environment.set(\"gatewayId\", data.id);",
+							"    console.log(\"Put gateway successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"okokokok\",\n\t\"address\":\"10.0.3.7\"\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/gateway/{{gatewayId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gateway",
+						"{{gatewayId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3efe45b-1af3-425c-b11d-f891d9beeeab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    console.log(\"Removed gateway successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/gateway/{{gatewayId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gateway",
+						"{{gatewayId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Peripheral POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8bb02314-4d87-412d-baf8-8f67f827ff48",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    pm.environment.set(\"peripheralId\", data.id);",
+							"    console.log(\"Peripheral created successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"vendor\":\"vendor1\",\n \"status\":\"ONLINE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/gateway/{{gatewayId}}/peripheral",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"gateway",
+						"{{gatewayId}}",
+						"peripheral"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Peripherals  GET All  (gatewayId)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b0aaf4a-0739-4c04-96f5-0c126667650a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    console.log(\"Get all pheripheral successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/gateway/{{gatewayId}}/peripheral",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gateway",
+						"{{gatewayId}}",
+						"peripheral"
+					]
+				},
+				"description": "to get all peripheral from specific gateway"
+			},
+			"response": []
+		},
+		{
+			"name": "Peripheral GET by id (gatewayId)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bb11e54-9ebf-400a-a5f8-ed109bac6df6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    pm.environment.set(\"peripheralId\", data.id);",
+							"    console.log(\"Get peripheral by id successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/gateway/{{gatewayId}}/peripheral/{{peripheralId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"gateway",
+						"{{gatewayId}}",
+						"peripheral",
+						"{{peripheralId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Peripheral DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac0f5938-8c38-452d-9a26-02eaf588778b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    console.log(\"Removed peripheral successful.\");",
+							"    ",
+							"}else",
+							"{",
+							"    console.log(\"Error\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/gateway/{{gatewayId}}/peripheral/{{peripheralId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"gateway",
+						"{{gatewayId}}",
+						"peripheral",
+						"{{peripheralId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b63888a4-121f-4445-b69d-0ead70b2af31",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8299fe88-9bbe-4f0a-9a92-47dad8419790",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9773ec48-9284-4c46-b2b0-8c1834b1cf61",
+			"key": "baseUrl",
+			"value": "http://localhost:8081/api",
+			"type": "string"
+		},
+		{
+			"id": "146df1c8-ea91-447b-af59-1f2c9703c245",
+			"key": "gatewayId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "be6dd8a8-af61-4f1d-9df1-8ca1e1cabf24",
+			"key": "peripheralId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
